@@ -17,19 +17,16 @@ with st.sidebar :
     selected = option_menu ("Aplikasi Analisis Kuantitatif",
     ["Identitas Kelompok",
      "Tabel Periodik",
-     "Perhitungan Bobot Sampel", 
-     "Perhitungan Volume Sampel",
-     "Perhitungan Normalitas (N)",
-     "Perhitungan Molaritas (M)",
-     "Perhitungan Molalitas (m)",
-     "Perhitungan Konsentrasi PPM",
-     "Perhitungan Pengenceran Konsentrasi Larutan Induk",
-     "Perhitungan Pengenceran Konsentrasi Larutan Encer",
-     "Perhitungan Pengenceran Volume Larutan Induk",
-     "Perhitungan Pengenceran Volume larutan Encer",
-     "Perhitungan Kadar Unsur Logam",
-     "Perhitungan Kadar Sampel (%)",
-     "Perhitungan Standarisasi Larutan Standar"], 
+     "Bobot Sampel", 
+     "Volume Sampel",
+     "Normalitas (N)",
+     "Molaritas (M)",
+     "Molalitas (m)",
+     "Konsentrasi PPM",
+     "Pengenceran Larutan",
+     "Kadar Unsur Logam",
+     "Kadar Sampel (%)",
+     "Standarisasi Larutan Standar"], 
     default_index=0)
     
 if (selected == "Identitas Kelompok") :
@@ -63,7 +60,7 @@ if (selected == "Tabel Periodik") :
 
     
 # Halaman hitung bobot sampel
-if (selected == "Perhitungan Bobot Sampel") :
+if (selected == "Bobot Sampel") :
     st.title('Perhitungan mencari bobot sampel (mg) ')
     
     st.write("Perhitungan mencari bobot sampel (mg) ")
@@ -80,7 +77,7 @@ if (selected == "Perhitungan Bobot Sampel") :
         st.balloons()
                
 # Halaman hitung volume sampel           
-if (selected == "Perhitungan Volume Sampel") :
+if (selected == "Volume Sampel") :
     st.title("Perhitungan mencari volume sampel")
     
     st.write("Perhitungan mencari volume sampel")
@@ -97,7 +94,7 @@ if (selected == "Perhitungan Volume Sampel") :
     
     
 # Halaman hitung Normalitas
-if (selected == "Perhitungan Normalitas (N)") :
+if (selected == "Normalitas (N)") :
     st.title("Perhitungan mencari Normalitas sampel")
         
     st.write("Perhitungan mencari Normalitas sampel")
@@ -113,7 +110,7 @@ if (selected == "Perhitungan Normalitas (N)") :
 
         
 # Halaman hitung Molaritas
-if (selected == "Perhitungan Molaritas (M)") :
+if (selected == "Molaritas (M)") :
     st.title("Perhitungan mencari Molaritas sampel")
         
     st.write("Perhitungan mencari Molaritas sampel")
@@ -128,7 +125,7 @@ if (selected == "Perhitungan Molaritas (M)") :
         st.balloons()
         
 # Halaman hitung Molalitas       
-if (selected == "Perhitungan Molalitas (m)") :
+if (selected == "Molalitas (m)") :
     st.title("Perhitungan mencari Molalitas sampel")
         
     st.write("Perhitungan mencari Molalitas sampel")
@@ -143,7 +140,7 @@ if (selected == "Perhitungan Molalitas (m)") :
         st.balloons()
 
 # Halaman hitung ppm        
-if (selected == "Perhitungan Konsentrasi PPM") :
+if (selected == "Konsentrasi PPM") :
     st.title("Perhitungan mencari Konsentrasi ppm")
         
     st.write("Perhitungan mencari Konsentrasi ppm")
@@ -158,94 +155,80 @@ if (selected == "Perhitungan Konsentrasi PPM") :
  
 
 # Halaman hitung pengenceran
+        
+if (selected == "Pengenceran Larutan") :
 
+    tab1, tab2, tab3, tab4 = st.tabs(["Konsentrasi Larutan Induk", "Konsentrasi Larutan Encer", "Volume Larutan Induk", "Volume Larutan Encer" ])
 
-if (selected == "Perhitungan Pengenceran Konsentrasi Larutan Induk") :
-    st.title("Perhitungan Konsentrasi Larutan Induk")
+    with tab1:
+        st.title("Perhitungan Konsentrasi Larutan Induk")
     
-    st.latex(r''' (V1*C1(induk)/V2(encer)) ''')
-    VolumeIndukk = st.number_input("Masukkan Volume (mL) larutan induk")
-    KonsentrasiEncerr = st.number_input("Masukkan konsentrasi larutan encer ")
-    VolumeEncerr = st.number_input("Masukkan volume (mL) larutan encer")
-    tombol = st.button ("Hitung Konsentrasi larutan encer")
-    if tombol:
-        pengenceran_larutan = (VolumeEncerr*KonsentrasiEncerr)/(VolumeIndukk)
-        st.success(f"Konsentrasi Larutan Induk sebesar...{round (pengenceran_larutan,4)}")
-        st.balloons()
-        
-        
-if (selected == "Perhitungan Pengenceran Konsentrasi Larutan Encer") :
-    st.title("Perhitungan Konsentrasi Larutan Encer")
-    
-    st.latex(r''' (V1*C1(induk)/V2(encer)) ''')
-    VolumeIndukk = st.number_input("Masukkan Volume (mL) larutan induk")
-    KonsentrasiIndukk = st.number_input("Masukkan konsentrasi larutan induk ")
-    VolumeEncerr = st.number_input("Masukkan volume (mL) larutan encer")
-    tombol = st.button ("Hitung Konsentrasi larutan encer")
-    if tombol:
-        pengenceran_larutan = (VolumeIndukk*KonsentrasiIndukk)/(VolumeEncerr)
-        st.success(f"Konsentrasi Larutan Encer sebesar...{round (pengenceran_larutan,4)}")
-        st.balloons() 
-        
- 
-if (selected == "Perhitungan Pengenceran Konsentrasi Larutan Induk") :
-    st.title("Perhitungan Konsentrasi Larutan induk")
-    
-    st.latex(r''' (V1(induk)/V2*C2(encer)) ''')
-    VolumeInduk = st.number_input("Masukkan Volume (mL) larutan induk")
-    KonsentrasiEncer = st.number_input("Masukkan konsentrasi larutan encer ")
-    VolumeEncerr = st.number_input("Masukkan volume (mL) larutan encer")
-    tombol = st.button ("Hitung Konsentrasi larutan induk")
-    if tombol:
-        pengenceran_larutan = (VolumeInduk)/(VolumeEncerr*KonsentrasiEncer)
-        st.success(f"Konsentrasi Larutan Encer sebesar...{round (pengenceran_larutan,4)}")
-        st.balloons() 
- 
+        st.latex(r''' (V1*C1(induk)/V2(encer)) ''')
+        VolumeInduk = st.number_input("Masukkan Volume (mL) larutan induk")
+        KonsentrasiEncer = st.number_input("Masukkan konsentrasi larutan encer ")
+        VolumeEncer = st.number_input("Masukkan Volume (mL) larutan encer")
+        tombol = st.button ("Hitung Konsentrasi larutan encer")
+        if tombol:
+            pengenceran_larutan = (VolumeEncer*KonsentrasiEncer)/(VolumeInduk)
+            st.success(f"Konsentrasi Larutan Induk sebesar...{round (pengenceran_larutan,4)}")
+            st.balloons()
 
-if (selected == "Perhitungan Pengenceran Volume Larutan Induk") :
-    st.title("Perhitungan Volume Larutan induk")
+    with tab2:
+        st.title("Perhitungan Konsentrasi Larutan Encer")
     
-    st.latex(r''' (V2*C2(encer)/C1(induk)) ''')
-    KonsentrasiIndukk = st.number_input("Masukkan konsentrasi larutan induk ")
-    KonsentrasiEncer = st.number_input("Masukkan konsentrasi larutan encer ")
-    VolumeEncerr = st.number_input("Masukkan volume (mL) larutan encer")
-    tombol = st.button ("Hitung Volume larutan induk")
-    if tombol:
-        pengenceran_larutan = (VolumeEncerr*KonsentrasiEncer)/(KonsentrasiIndukk)
-        st.success(f"Volume Larutan Induk sebesar...{round (pengenceran_larutan,2)}")
-        st.balloons() 
+        st.latex(r''' (V1*C1(induk)/V2(encer)) ''')
+        VolumeeInduk = st.number_input("Masukkan Volume (mL) larutan induk =")
+        KonsentrasiIndukk = st.number_input("Masukkan konsentrasi dari larutan induk =")
+        volumeencerrr = st.number_input("Masukkan Volume (mL) larutan encer =")
+        tombol = st.button ("Hitung Konsentrasi larutan encer =")
+        if tombol:
+            pengenceran_larutan = (VolumeeInduk*KonsentrasiIndukk)/(volumeencerrr)
+            st.success(f"Konsentrasi Larutan Encer sebesar...{round (pengenceran_larutan,4)}")
+            st.balloons()
         
-        
-if (selected == "Perhitungan Pengenceran Volume Larutan Encer") :
-    st.title("Perhitungan Volume Larutan Encer")
+    with tab3:
+        st.title("Perhitungan Volume Larutan induk")
     
-    st.latex(r''' (V1*C1(induk)/C2(encer)) ''')
-    VolumeIndukk = st.number_input("Masukkan volume (mL) larutan induk")
-    KonsentrasiIndukkk = st.number_input("Masukkan Konsentrasi larutan induk ")
-    KonsentrasiEncerr = st.number_input("Masukkan konsentrasi larutan encer")
-    tombol = st.button ("Hitung Volume larutan encer")
-    if tombol:
-        pengenceran_larutan = (VolumeIndukk*KonsentrasiIndukkk)/(KonsentrasiEncerr)
-        st.success(f"Volume Larutan Encer sebesar...{round (pengenceran_larutan,2)}")
-        st.balloons() 
+        st.latex(r''' (V2*C2(encer)/C1(induk)) ''')
+        KonsentrasiIndukkk = st.number_input("Masukkan konsentrasi larutan induk =")
+        KonsentrasiEncer = st.number_input("Masukkan konsentrasi larutan encer =")
+        VolummeEncerrr = st.number_input("Masukkan volume (mL) larutan encer =")
+        tombol = st.button ("Hitung Volume larutan induk =")
+        if tombol:
+            pengenceran_larutan = (VolummeEncerrr*KonsentrasiEncer)/(KonsentrasiIndukkk)
+            st.success(f"Volume Larutan Induk (mL) sebesar...{round (pengenceran_larutan,2)}")
+            st.balloons()
+        
+    with tab4:
+        st.title("Perhitungan Volume Larutan Encer")
+    
+        st.latex(r''' (V1*C1(induk)/C2(encer)) ''')
+        volumeeIndukkkk = st.number_input("Masukkan volume (mL) larutan induk")
+        KonsentrasiIndukkkk = st.number_input("Masukkan Konsentrasi larutan induk ")
+        KonsentrasiEncerr = st.number_input("Masukkan konsentrasi larutan encer")
+        tombol = st.button ("Hitung Volume larutan encer")
+        if tombol:
+            pengenceran_larutan = (volumeeIndukkkk*KonsentrasiIndukkkk)/(KonsentrasiEncerr)
+            st.success(f"Volume Larutan Encer (mL) sebesar...{round (pengenceran_larutan,2)}")
+            st.balloons()
 
 # Halaman hitung kadar logam       
-if (selected == "Perhitungan Kadar Unsur Logam") :
+if (selected == "Kadar Unsur Logam") :
     st.title("Perhitungan mencari kadar (%) logam")
     
     st.write("Perhitungan mencari kadar logam")
     st.latex(r''' ((V*N*Be)/gr))*100% ''')
     V = st.number_input("Masukkan volume (mL) sampel = ")
     N = st.number_input("Masukkan Normalitas sampel")
-    BE = st.number_input("Masukkan Be sampel")
-    gr = st.number_input("Masukkan bobot sampel")
+    BE = st.number_input("Masukkan BE sampel")
+    gr = st.number_input("Masukkan bobot (gr) sampel")
     tombol = st.button ("Hitung jumlah kadar (%) sampel")
     if tombol:
         kadar_sampel = (((V*N*BE)/gr)*100)
         st.success(f"Jumlah Kadar Sampel (%) sebesar...{round (kadar_sampel,2)}")
         st.balloons()
         
-if (selected == "Perhitungan Kadar Sampel (%)") :
+if (selected == "Kadar Sampel (%)") :
 
     tab1, tab2, tab3 = st.tabs(["%b/b", "%v/v", "%b/v"])
 
@@ -289,14 +272,14 @@ if (selected == "Perhitungan Kadar Sampel (%)") :
             st.balloons()
     
 # Halaman hitung standarirasi        
-if (selected == "Perhitungan Standarisasi Larutan Standar") :
+if (selected == "Standarisasi Larutan Standar") :
     st.title("Perhitungan mencari Standarisasi Larutan Standar (N)")
     
     st.write("Perhitungan mencari Standarisasi Larutan Standar")
-    st.latex(r''' mg Bahan Baku/(ml Larutan*BE Bahan Baku) ''')
+    st.latex(r''' mg Bahan Baku/(mL Larutan*BE Bahan Baku) ''')
     mgBahanBaku = st.number_input("Masukkan bobot (mg) bahan baku = ")
-    mlLLarutan = st.number_input("Masukkan volume (ml) larutan yang dititar")
-    BEBahanBaku = st.number_input("Masukkan Be Bahan Baku")
+    mlLLarutan = st.number_input("Masukkan volume (mL) larutan yang dititar")
+    BEBahanBaku = st.number_input("Masukkan BE Bahan Baku")
     tombol = st.button ("Hitung Standarisasi Larutan Standar (N)")
     if tombol:
         kadar_sampel = mgBahanBaku/(mlLLarutan*BEBahanBaku)
