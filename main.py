@@ -4,7 +4,6 @@ import numpy as np
 
 from streamlit_option_menu import option_menu
 
-
 # welcome        
 with st.sidebar :
     
@@ -15,7 +14,7 @@ with st.sidebar :
     st.image(image, caption="")
     
     selected = option_menu ("Aplikasi Analisis Kuantitatif",
-    ["Identitas Kelompok",
+    ["Home",
      "Tabel Periodik",
      "Bobot Sampel", 
      "Volume Sampel",
@@ -29,9 +28,10 @@ with st.sidebar :
      "Standarisasi Larutan Standar"], 
     default_index=0)
     
-if (selected == "Identitas Kelompok") :
     
-    tab1, tab2 = st.tabs(["Home", "Anggota"])
+if (selected == "Home") :
+    
+    tab1, tab2, tab3 = st.tabs(["Home", "Analisis Kuantitatif", "About Us"])
 
     with tab1:
         from PIL import Image
@@ -41,13 +41,60 @@ if (selected == "Identitas Kelompok") :
         st.image(image, caption="")
     
     with tab2:
+        
+        st.title("Apa itu Analisis Kuantitatif?")
+        
+        st.write('''Analisis kuantitatif adalah analisis kimia yang menyangkut 
+        penentuan jumlah zat tertentu yang ada di dalam suatu sampel. Analisis 
+        kuantitatif terdiri atas gravimetri, volumetri, dan spektrofotometri.
+        ''')
+        
+        st.title("Satuan dalam Analisis Kuantitatif")
+        
+        txt = st.text_area('Normalitas', '''
+        Normalitas dapat diartikan sebagai jumlah mol ekuivalen dari suatu 
+        zat per liter larutan. Normalitas digunakan untuk mencari padatan 
+        yang dilarutkan dalam air berbeda dengan rumus normalitas jumlah mol 
+        ekuivalen dari suatu zat per liter.
+        ''')
+        
+        txt = st.text_area('Moralitas', '''
+        Molaritas dalam konsentrasi larutan dikenal dengan istilah konsentrasi 
+        molar atau molaritas dengan simbol yang dimiliki yaitu M. Molaritas 
+        digunakan untuk mendapatkan konsentrasi larutan secara kuantitatif. 
+        Dinyatakan sebagai jumlah mol suatu Solut dalam larutan dibagi dengan 
+        volume larutan yang ditentukan dalam liter.
+        ''')
+        
+        txt = st.text_area('Molalitas', '''
+        Molalitas adalah suatu konsentrasi larutan yang menyatakan banyaknya 
+        mol senyawa atau zat setiap kilogram pelarut (Solvent).
+        ''')
+        
+        txt = st.text_area('Konsentrasi dalam %', '''
+        Dalam ilmu kimia, untuk menyatakan konsentrasi larutan sering digunakan 
+        istilah persen. Persen dalam konsentrasi larutan dapat dinyatakan menjadi 
+        tiga bentuk, yaitu persen berat (%W/W), persen volume (%V/V), dan persen 
+        berat volume (%W/V). Persen berat sering digunakan karena persen ini 
+        tidak bergantung pada temperatur suhu.
+        ''')
+        
+        txt = st.text_area('Konsentrasi dalam ppm', '''
+        Konsentrasi parts per million merupakan bagian per satu juta. satuan ini 
+        banyak digunakan untuk menganalisis unsur jumlah trace (kelumit) dengan 
+        SSA (Spektrometri Serapan Atom).
+        ''')
+        
+    
+    with tab3:
+        st.write("Halo selamat datang di aplikasi kami! Semoga bermanfaat. Sebelumnya izinkan kami untuk memperkenalkan diri..")
         st.write("1. Ainun Salsabila")
         st.write("2. Muhammad Zikrian Erwanda")
         st.write("3. Olin Riliana Agustin")
         st.write("4. Rafie Azri Avveroes")
         st.write("5. Siti Raskiah Nur Pratiwi")
-         
-    
+        
+        
 if (selected == "Tabel Periodik") :
     st.title("Tabel Periodik")
     
